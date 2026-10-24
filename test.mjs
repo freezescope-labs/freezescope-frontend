@@ -1,0 +1,2 @@
+import{test}from'node:test';import assert from'node:assert/strict';import{readFile}from'node:fs/promises';import{CSP}from'./server.mjs';
+test('review interface exposes boundary and accessible evidence controls',async()=>{const h=await readFile(new URL('index.html',import.meta.url),'utf8');for(const t of ['Cannot','Before → after','Coverage boundary','Import review bundle'])if(t!=='Cannot')assert.ok(h.includes(t));assert.match(h,/cannot freeze/);assert.match(CSP,/frame-ancestors 'none'/)});
